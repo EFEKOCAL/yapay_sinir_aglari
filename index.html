@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yapay Sinir Ağları dersi için hocanın sırasıyla, önce düşündüren interaktif ders notları">
+  <meta name="theme-color" content="#090d15">
+  <title>YSA Interactive Lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111a28'/%3E%3Cg stroke='%2338bdf8' stroke-width='1.6'%3E%3Cpath d='M8 10L16 16M8 22L16 16M16 16L24 16'/%3E%3C/g%3E%3Cg fill='%2338bdf8'%3E%3Ccircle cx='8' cy='10' r='3'/%3E%3Ccircle cx='8' cy='22' r='3'/%3E%3Ccircle cx='16' cy='16' r='3.4'/%3E%3Ccircle cx='24' cy='16' r='3'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ysa.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Modüller">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="12" cy="12" r="2.2"/><circle cx="19" cy="12" r="2"/>
+            <path d="M6.8 8l3.4 3M6.8 16l3.4-3M14.2 12h2.8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">YSA Interactive Lab</div>
+          <div class="brand-sub">Yapay Sinir Ağları</div>
+        </div>
+      </div>
+
+      <div class="nav-label">Ders (önce düşün, sonra öğren)</div>
+      <nav class="nav">
+        <a class="nav-item" href="#/learn" data-route="learn">
+          <span class="nav-num">★</span>
+          <span class="nav-text"><span class="nav-title">Başlangıç</span><span class="nav-sub">Kaldığın yerden devam et</span></span>
+        </a>
+        <a class="nav-item" href="#/learn/plan" data-route="learn">
+          <span class="nav-num">≡</span>
+          <span class="nav-text"><span class="nav-title">Genel Bakış</span><span class="nav-sub">Çalışma yöntemi, vize kapsamı</span></span>
+        </a>
+        <a class="nav-item" href="#/map" data-route="map">
+          <span class="nav-num">◎</span>
+          <span class="nav-text"><span class="nav-title">Nöral Bakış</span><span class="nav-sub">Tüm ders tek haritada</span></span>
+        </a>
+        <a class="nav-item" href="#/learn/ch1" data-route="learn">
+          <span class="nav-num">B1</span>
+          <span class="nav-text"><span class="nav-title">Yapay Zekaya Temel Bakış</span><span class="nav-sub">Zeka, Turing, zayıf/kuvvetli YZ</span></span>
+        </a>
+        <a class="nav-item nav-planned" href="#/learn/plan" data-route="learn">
+          <span class="nav-num">B2</span>
+          <span class="nav-text"><span class="nav-title">YZ, ML ve YSA'ya Giriş</span><span class="nav-sub">Hazırlanıyor</span></span>
+        </a>
+        <a class="nav-item nav-planned" href="#/learn/plan" data-route="learn">
+          <span class="nav-num">B3</span>
+          <span class="nav-text"><span class="nav-title">Tek Katmanlı Algılayıcılar</span><span class="nav-sub">Hazırlanıyor</span></span>
+        </a>
+        <a class="nav-item nav-planned" href="#/learn/plan" data-route="learn">
+          <span class="nav-num">B4</span>
+          <span class="nav-text"><span class="nav-title">Çok Katmanlı Algılayıcılar</span><span class="nav-sub">Hazırlanıyor · s.1–25</span></span>
+        </a>
+        <a class="nav-item" href="#/learn/sorular" data-route="learn">
+          <span class="nav-num">?</span>
+          <span class="nav-text"><span class="nav-title">Sınav Soruları</span><span class="nav-sub">Aralıklı tekrar</span></span>
+          <span class="badge badge-live">Sınav</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div><kbd>I</kbd> Bilgi panelini aç/kapat</div>
+        <div><kbd>↓</kbd> <kbd>Boşluk</kbd> Sonraki kart</div>
+        <div><kbd>Esc</kbd> Paneli kapat</div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Menüyü aç" aria-controls="sidebar" aria-expanded="false">☰</button>
+        <div class="crumbs">
+          <span class="crumb-num" id="page-num">T</span>
+          <h1 id="page-title">Ders Notları</h1>
+          <span class="page-sub" id="page-sub"></span>
+        </div>
+        <span class="status" id="status"><i class="led"></i><span id="status-text">STANDBY</span></span>
+      </header>
+      <main class="content" id="view"></main>
+    </div>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+
+  <button class="info-fab" id="info-fab" type="button" aria-expanded="false" aria-controls="info-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/>
+    </svg>
+    Bilgi &amp; Sözlük
+  </button>
+
+  <aside class="info-panel" id="info-panel" aria-hidden="true" aria-label="Bilgi Paneli">
+    <header class="info-head">
+      <div>
+        <div class="info-title">Bilgi &amp; Sınav Paneli</div>
+        <div class="info-module" id="info-module"></div>
+      </div>
+      <button class="icon-btn info-close" type="button" aria-label="Paneli kapat">×</button>
+    </header>
+    <div class="info-tabs" role="tablist">
+      <button class="info-tab" type="button" role="tab" data-tab="theory">Bilgi</button>
+      <button class="info-tab" type="button" role="tab" data-tab="exam">Sınav Soruları <span class="count" id="exam-count">0</span></button>
+    </div>
+    <div class="info-pane" id="info-theory" role="tabpanel"></div>
+    <div class="info-pane" id="info-exam" role="tabpanel" hidden></div>
+  </aside>
+
+  <!-- sıra önemli: sözlük → bilgi paneli → bölüm planı; şekil motoru → YZ şekilleri → ders verisi -->
+  <script src="js/data/glossary.js" defer></script>
+  <script src="js/data/info-content.js" defer></script>
+  <script src="js/data/chapter-outlines.js" defer></script>
+  <script src="js/data/exam-questions.js" defer></script>
+  <script src="js/views/diagrams.js" defer></script>
+  <script src="js/views/diagrams-ai.js" defer></script>
+  <script src="js/data/lessons-ch1.js" defer></script>
+  <script src="js/data/lessons-ch1b.js" defer></script>
+  <script src="js/views/learn-view.js" defer></script>
+  <script src="js/views/map-view.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

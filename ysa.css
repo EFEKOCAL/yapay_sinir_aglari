@@ -1,0 +1,112 @@
+/* ==========================================================================
+   ysa.css — YSA sitesine özgü eklemeler (style.css şablonun üstüne)
+   ========================================================================== */
+
+/* --------------------------------------------------------------- not türleri */
+.l-note.teacher { border-color: rgba(56, 189, 248, 0.5); border-left: 4px solid var(--accent); background: var(--accent-soft); }
+.l-note.teacher .l-note-label { color: var(--accent); }
+.l-note.class { border-color: rgba(244, 114, 182, 0.5); border-style: dashed; background: rgba(244, 114, 182, 0.07); }
+.l-note.class .l-note-label { color: #f472b6; }
+.src-class { color: #f472b6; border-color: rgba(244, 114, 182, 0.5); background: rgba(244, 114, 182, 0.1); }
+
+/* --------------------------------------------------------------- hocanın görseli */
+.l-img { margin: 14px 0; display: grid; gap: 8px; }
+.l-img > img { display: block; max-width: 100%; max-height: 52vh; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border-strong); background: #fff; object-fit: contain; }
+.l-img:has(img + img) { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); align-items: center; }
+.l-img:has(img + img) > figcaption { grid-column: 1 / -1; }
+.l-img.small > img { max-height: 26vh; }
+.l-img figcaption { font-size: 13px; color: var(--muted); text-align: center; }
+.l-img-src { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border-strong); font: 600 11px var(--mono); color: var(--faint); white-space: nowrap; }
+
+/* --------------------------------------------------------------- hocanın bağlantısı */
+.l-link { display: flex; align-items: flex-start; gap: 12px; margin: 10px 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--bg-2); color: var(--text); text-decoration: none; transition: border-color 0.15s, background 0.15s; }
+.l-link:hover { border-color: var(--accent); background: var(--accent-soft); }
+.l-link-kind { flex: none; padding: 3px 9px; border-radius: 8px; background: var(--panel-3); font: 700 11.5px var(--mono); color: var(--accent); white-space: nowrap; }
+.l-link-body { display: grid; gap: 3px; min-width: 0; flex: 1; }
+.l-link-body small { color: var(--text-2); font-size: 13px; line-height: 1.45; }
+.l-link-body code { background: none; padding: 0; color: var(--faint); font-size: 11.5px; overflow-wrap: anywhere; }
+
+/* --------------------------------------------------------------- alıntı */
+.l-quote { margin: 8px 0; padding: 8px 14px; border-left: 3px solid var(--accent-2); background: rgba(167, 139, 250, 0.06); border-radius: 0 10px 10px 0; }
+.l-quote p { margin: 0; font-style: italic; font-size: 15px; }
+.l-quote footer { margin-top: 3px; font-size: 12.5px; font-weight: 700; color: var(--accent-2); }
+.l-quote footer small { font-weight: 400; color: var(--muted); }
+
+/* --------------------------------------------------------------- önce düşün */
+.l-think { margin: 14px 0; padding: 16px 18px; border-radius: 12px; border: 1px dashed rgba(251, 191, 36, 0.6); background: var(--warn-soft, rgba(251, 191, 36, 0.08)); }
+.l-think .l-note-label { color: var(--warn); }
+.l-think-q { margin: 8px 0; font-size: 17.5px; font-weight: 600; line-height: 1.45; }
+.l-think-hint { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+.l-think-in { display: block; width: 100%; margin: 6px 0 10px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--bg); color: var(--text); font: 14px/1.5 var(--sans); resize: vertical; }
+.l-think-in:focus { outline: none; border-color: var(--warn); }
+.l-think .btn[hidden] { display: none; }
+.l-think-a { margin-top: 10px; padding: 12px 14px; border-radius: 10px; border-left: 4px solid var(--accent); background: var(--accent-soft); }
+.l-think-a::before { content: 'Hocanın cevabı ve mantığı'; display: block; margin-bottom: 4px; font: 700 10.5px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.l-think-a p { margin: 6px 0; }
+.l-think-a ul { margin: 6px 0; padding-left: 20px; }
+
+/* --------------------------------------------------------------- bölüm girişi */
+.ci-aim { margin-top: 16px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.35); background: var(--accent-soft); font-size: 14.5px; }
+.ci-aim p { margin: 6px 0; }
+.ci-aim ul { margin: 6px 0; padding-left: 20px; }
+.ci-aim li { margin: 3px 0; }
+.ci-chips a { padding: 5px 11px; border-radius: 999px; border: 1px solid rgba(167, 139, 250, 0.45); background: rgba(167, 139, 250, 0.1); font-size: 13.5px; color: var(--text); text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+.ci-chips a:hover { background: rgba(167, 139, 250, 0.25); border-color: var(--accent-2); }
+.ci-chips a::after { content: ' →'; color: var(--accent-2); }
+
+/* --------------------------------------------------------------- hazırlanan bölümler */
+.l-planned { opacity: 0.55; border-style: dashed; cursor: default; }
+.nav-planned { opacity: 0.55; }
+.nm-svg .planned { opacity: 0.38; }
+.nm-svg .planned:hover { opacity: 0.7; }
+.nm-dot.planned { opacity: 0.4; border-style: dashed; }
+
+/* --------------------------------------------------------------- sınıflandırma alıştırması */
+.dg-sort .sort-list { display: grid; gap: 8px; padding: 12px; }
+.sort-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-2); }
+.sort-t { font-size: 14.5px; }
+.sort-btns { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.sort-b { padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border-strong); background: var(--panel-2); color: var(--text-2); font-size: 12.5px; cursor: pointer; }
+.sort-b:hover { border-color: var(--accent); color: var(--text); }
+.sort-row.ok { border-color: rgba(52, 211, 153, 0.55); }
+.sort-row.ko { border-color: rgba(248, 113, 113, 0.55); }
+.sort-row.ok .sort-b, .sort-row.ko .sort-b { cursor: default; opacity: 0.55; }
+.sort-b.right { opacity: 1 !important; border-color: var(--ok); background: var(--ok-soft); color: var(--text); }
+.sort-row.ko .sort-b.picked { opacity: 1; border-color: var(--danger); background: var(--danger-soft); }
+.sort-why { grid-column: 1 / -1; color: var(--text-2); font-size: 13px; }
+.sort-foot { display: flex; align-items: center; justify-content: space-between; padding: 0 12px 6px; font: 12.5px var(--mono); color: var(--muted); }
+
+/* --------------------------------------------------------------- geleneksel / ML akışı */
+.ml-flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 16px 8px 4px; }
+.ml-flow .dg-col { display: grid; gap: 8px; }
+.ml-flow .dg-b { min-width: 150px; }
+.ml-cpu { border-style: dashed !important; }
+.ml-hot { border-color: var(--warn) !important; box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15); }
+.ml-note { margin: 10px 16px 6px; font-size: 13.5px; color: var(--text-2); text-align: center; }
+
+/* --------------------------------------------------------------- Turing odaları, Çin odası */
+.tt-rooms { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; padding-top: 14px; }
+.tt-room { min-width: 190px; }
+.tt-wire { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 6px 0; font-size: 12px; color: var(--faint); }
+.tt-judge { display: flex; justify-content: center; padding-bottom: 12px; }
+.co-bottom { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 0; }
+.co-room { border-style: dashed !important; }
+
+/* --------------------------------------------------------------- mini ELIZA */
+.dg-eliza { padding: 12px; }
+.el-log { display: flex; flex-direction: column; gap: 8px; max-height: 280px; min-height: 140px; overflow-y: auto; padding: 10px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); font-family: var(--mono); font-size: 13.5px; }
+.el-msg { max-width: 82%; padding: 7px 11px; border-radius: 10px; }
+.el-bot { align-self: flex-start; background: var(--panel-3); }
+.el-you { align-self: flex-end; background: var(--accent-soft); border: 1px solid rgba(56, 189, 248, 0.35); }
+.el-rule { display: none; margin-top: 4px; font-size: 11.5px; color: var(--warn); }
+.dg-eliza.peek .el-rule { display: block; }
+.el-form { display: flex; gap: 8px; margin-top: 10px; }
+.el-in { flex: 1; min-width: 0; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--bg-2); }
+.el-in:focus { outline: none; border-color: var(--accent); }
+.el-peek { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 13px; color: var(--muted); cursor: pointer; }
+
+@media (max-width: 640px) {
+  .sort-row { grid-template-columns: 1fr; }
+  .sort-btns { justify-content: flex-start; }
+  .l-link { flex-direction: column; gap: 6px; }
+}
