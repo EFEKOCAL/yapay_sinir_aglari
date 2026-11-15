@@ -1,5 +1,7 @@
 # YSA Interactive Lab
 
+**▶ Canlı site: [efekocal.github.io/yapay_sinir_aglari](https://efekocal.github.io/yapay_sinir_aglari/)**
+
 **Yapay Sinir Ağları** dersi (Prof. Dr. Serhat Özekes) için hocanın PDF sırasıyla ilerleyen, önce düşündüren interaktif ders notları. Saf HTML, CSS ve JavaScript ile yazıldı; kurulum gerekmez. `index.html` dosyasını açman yeterli.
 
 Tasarım ve altyapı, *OOP Interactive Lab* (Java) ve *OS Interactive Lab* (İşletim Sistemleri) sitelerinden geliyor.
